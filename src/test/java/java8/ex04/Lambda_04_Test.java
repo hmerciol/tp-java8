@@ -1,6 +1,7 @@
 package java8.ex04;
 
 
+import java8.data.Account;
 import java8.data.Data;
 import java8.data.Person;
 import org.junit.Test;
@@ -18,14 +19,20 @@ public class Lambda_04_Test {
     // tag::interfaces[]
     interface GenericPredicate<T> {
         // TODO
+    	boolean test(T t);
+    	//done
     }
 
     interface GenericMapper<T, E> {
         // TODO
+    	E map(T t);
+    	//done
     }
 
     interface Processor<T> {
         // TODO
+    	void process(T t);
+    	//done
     }
     // end::interfaces[]
 
@@ -49,17 +56,29 @@ public class Lambda_04_Test {
         private FuncCollection<T> filter(GenericPredicate<T> predicate) {
             FuncCollection<T> result = new FuncCollection<>();
             // TODO
+            for(T element : list) {
+            	if(predicate.test(element))
+            		result.add(element);
+            }
+            //done
             return result;
         }
 
         private <E> FuncCollection<E> map(GenericMapper<T, E> mapper) {
             FuncCollection<E> result = new FuncCollection<>();
             // TODO
+            for(T element : list) {
+            	result.add(mapper.map(element));
+            }
+            //done
             return result;
         }
 
         private void forEach(Processor<T> processor) {
            // TODO
+        	for(T element : list)
+        		processor.process(element);
+        	//done
         }
         // end::methods[]
 
@@ -77,15 +96,19 @@ public class Lambda_04_Test {
 
         personFuncCollection
                 // TODO filtrer, ne garder uniquement que les personnes ayant un age > 50
-                .filter(null)
+                .filter(person -> person.getAge()>50)
                 // TODO transformer la liste de personnes en liste de comptes. Un compte a par défaut un solde à 1000.
-                .map(null)
+                .map(person -> {
+                	Account account = new Account();
+                	account.setBalance(1000);
+                	account.setOwner(person);
+                	return account;})
                 // TODO vérifier que chaque compte a un solde à 1000.
                 // TODO vérifier que chaque titulaire de compte a un age > 50
-                .forEach(null);
-
-        // TODO à supprimer
-        assert false;
+                .forEach(account -> {
+                	assert account.getBalance() == 1000;
+                	assert account.getOwner().getAge() > 50;});
+        //done
     }
     // end::test_filter_map_forEach[]
 
