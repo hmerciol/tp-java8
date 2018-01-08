@@ -42,7 +42,11 @@ public class Lambda_02_Test {
 
         // TODO transformer la liste de personnes en liste de comptes
         // TODO tous les objets comptes ont un solde à 100 par défaut
-        List<Account> result = map(personList, person -> {Account account = new Account(); account.setBalance(100); account.setOwner(person); return account;});
+        List<Account> result = map(personList, person -> {
+        	Account account = new Account();
+        	account.setBalance(100);
+        	account.setOwner(person);
+        	return account;});
         //done
 
         assert result.size() == personList.size();
