@@ -2,6 +2,7 @@ package java8.ex03;
 
 import java8.data.Account;
 import java8.data.Person;
+
 import org.junit.Test;
 
 import java.util.Optional;
@@ -45,7 +46,8 @@ public class Optional_03_Test {
         Optional<Account> accOpt = Optional.ofNullable(account);
         // TODO A l'aide de la méthode map récupérer le prénom (account -> person -> firstname)
         // TODO Utiliser la méthode orElseThrow pour déclencher l'exception GoodException si non trouvé
-        // accOpt.map...
+        accOpt.map(acc -> acc.getOwner().getFirstname()).orElseThrow(() -> new GoodException());
+        //done
     }
 
     @Test(expected = GoodException.class)
@@ -54,7 +56,8 @@ public class Optional_03_Test {
         Optional<Account> accOpt = Optional.ofNullable(account);
         // TODO A l'aide de la méthode map récupérer le prénom (account -> person -> firstname)
         // TODO Utiliser la méthode orElseThrow pour déclencher l'exception GoodException si non trouvé
-        // accOpt.map...
+        accOpt.map(acc -> acc.getOwner()).map(per -> per.getFirstname()).orElseThrow(() -> new GoodException());
+        //done
     }
 
     @Test(expected = GoodException.class)
@@ -63,7 +66,8 @@ public class Optional_03_Test {
         Optional<Account> accOpt = Optional.ofNullable(account);
         // TODO A l'aide de la méthode map récupérer le prénom (account -> person -> firstname)
         // TODO Utiliser la méthode orElseThrow pour déclencher l'exception GoodException si non trouvé
-        // accOpt.map...
+        accOpt.map(acc -> acc.getOwner()).map(per -> per.getFirstname()).orElseThrow(() -> new GoodException());
+        //done
     }
 
     @Test
@@ -72,6 +76,7 @@ public class Optional_03_Test {
         Optional<Account> accOpt = Optional.ofNullable(account);
         // TODO A l'aide de la méthode map récupérer le prénom (account -> person -> firstname)
         // TODO Utiliser la méthode ifPresent pour valider que le prénom est "A"
-        // accOpt.map...
+        accOpt.map(acc -> acc.getOwner()).map(per -> per.getFirstname()).ifPresent(fName -> {assert fName.equals("A");});
+        //done
     }
 }
