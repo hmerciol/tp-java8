@@ -72,7 +72,8 @@ public class Stream_01_Test {
         List<Pizza> pizzas = new Data().getPizzas();
 
         // TODO valider qu'aucune pizza n'a un prix >= 2000
-        Boolean result1 = null;
+        Boolean result1 = pizzas.stream().noneMatch(pizz -> pizz.getPrice() >= 2000);
+        //done
 
         assertThat(result1, is(true));
     }
@@ -85,7 +86,9 @@ public class Stream_01_Test {
         // TODO récupérer toutes les commandes dont
         // TODO le prénom du client est "Johnny"
         // TODO dont au moins une pizza a un prix >= 1300
-        List<Order> result = null;
+        List<Order> result = orders.stream().filter(o -> o.getCustomer().getFirstname().equals("Johnny"))
+        		.filter(o -> o.getPizzas().stream().anyMatch(p -> p.getPrice() >= 1300)).collect(Collectors.toList());
+        //done
 
         assertThat(result, hasSize(1));
         assertThat(result.get(0), hasProperty("id", is(8)));
@@ -96,7 +99,8 @@ public class Stream_01_Test {
         List<Order> orders = new Data().getOrders();
 
         // TODO récupérer une commande faite par un client dont le prénom est "Sophie"
-        Optional<Order> result = null;
+        Optional<Order> result = Optional.of(orders.stream().filter(o -> o.getCustomer().getFirstname().equals("Sophie")).findFirst().get());
+        //done
 
         assertThat(result.isPresent(), is(false));
     }
