@@ -43,6 +43,7 @@ public class Method_02_Test {
         public String format() {
         	return "DaoA"+IDao.super.format();
         }
+        //done
 
     }
     // end::DaoA[]
@@ -54,6 +55,7 @@ public class Method_02_Test {
 
         // TODO invoquer la méthode format() pour que le test soit passant
         String result = daoA.format();
+        //done
 
         "DaoA[20 persons]".equals(result);
     }
