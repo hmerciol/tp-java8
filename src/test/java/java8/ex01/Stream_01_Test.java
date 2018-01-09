@@ -99,7 +99,7 @@ public class Stream_01_Test {
         List<Order> orders = new Data().getOrders();
 
         // TODO récupérer une commande faite par un client dont le prénom est "Sophie"
-        Optional<Order> result = Optional.of(orders.stream().filter(o -> o.getCustomer().getFirstname().equals("Sophie")).findFirst().get());
+        Optional<Order> result = orders.stream().filter(o -> o.getCustomer().getFirstname().equals("Sophie")).findFirst();
         //done
 
         assertThat(result.isPresent(), is(false));
@@ -110,7 +110,8 @@ public class Stream_01_Test {
         List<Pizza> pizzas = new Data().getPizzas();
 
         // TODO Trouver la pizza la plus chère
-        Optional<Pizza> result = null;
+        Optional<Pizza> result = pizzas.stream().max((p1, p2) -> p1.getPrice() - p2.getPrice());
+        //done
 
         assertThat(result.isPresent(), is(true));
         assertThat(result.get(), hasProperty("id", is(5)));
@@ -125,7 +126,8 @@ public class Stream_01_Test {
         List<Pizza> pizzas = new Data().getPizzas();
 
         // TODO Trouver la pizza la moins chère dont le prix est >= 950
-        Optional<Pizza> result = null;
+        Optional<Pizza> result = pizzas.stream().filter(p -> p.getPrice() >= 950).min((p1, p2) -> p1.getPrice() - p2.getPrice());
+        //done
 
         assertThat(result.isPresent(), is(true));
         assertThat(result.get(), hasProperty("id", is(3)));
