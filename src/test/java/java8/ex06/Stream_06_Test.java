@@ -110,7 +110,7 @@ public class Stream_06_Test {
     // TODO compléter la méthode rangeSum
     // TODO utiliser la méthode LongStream.rangeClosed
     private long rangeSum(long n) {
-        return LongStream.rangeClosed(0L, n-1).reduce((nb1, nb2) -> nb1+nb2).getAsLong();
+        return LongStream.rangeClosed(0L, n-1).sum();
         //done
     }
 
@@ -130,7 +130,7 @@ public class Stream_06_Test {
     // TODO utiliser la méthode LongStream.rangeClosed
     // TODO transformer en stream parallel (.parallel())
     private long rangeParallelSum(long n) {
-        return LongStream.rangeClosed(0L, n-1).parallel().reduce((nb1, nb2) -> nb1+nb2).getAsLong();
+        return LongStream.rangeClosed(0L, n-1).parallel().sum();
         //done
     }
 
