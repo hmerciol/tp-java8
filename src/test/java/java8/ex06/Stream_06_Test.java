@@ -131,6 +131,7 @@ public class Stream_06_Test {
     // TODO transformer en stream parallel (.parallel())
     private long rangeParallelSum(long n) {
         return LongStream.rangeClosed(0L, n-1).parallel().reduce((nb1, nb2) -> nb1+nb2).getAsLong();
+        //done
     }
 
     // TODO vérifier que l'implémentation de rangeParallelSum
