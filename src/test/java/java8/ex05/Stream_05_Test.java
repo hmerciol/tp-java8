@@ -141,7 +141,7 @@ public class Stream_05_Test {
         }
     }
 
-    // Des données figurent dans le répertoire pizza-data
+/*    // Des données figurent dans le répertoire pizza-data
     // TODO explorer les fichiers pour voir leur forme
     // TODO compléter le test
 
@@ -160,5 +160,5 @@ public class Stream_05_Test {
     // TODO Créer un test qui exporte des données new Data().getPizzas() dans des fichiers
     // TODO 1 fichier par pizza
     // TODO le nom du fichier est de la forme ID.txt (ex. 1.txt, 2.txt)
-
+*/
 }
