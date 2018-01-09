@@ -37,8 +37,8 @@ public class Stream_02_Test {
 
         // TODO calculer les statistiques sur les prix des pizzas vendues
         // TODO utiliser l'opération summaryStatistics
-        IntSummaryStatistics result = orders.stream().flatMap(o -> o.getPizzas().stream())
-        		.collect(Collectors.summarizingInt(p -> p.getPrice()));
+        IntSummaryStatistics result = orders.stream()
+        		.flatMapToInt(o -> o.getPizzas().stream().mapToInt(p -> p.getPrice())).summaryStatistics();
         //done
 
 
