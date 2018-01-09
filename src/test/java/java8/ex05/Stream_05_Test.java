@@ -83,7 +83,6 @@ public class Stream_05_Test {
             				mapping((Naissance n) -> n.getNombre(), reducing(0, (nb1, nb2) -> nb1+nb2))));
             //done
             
-            lines.close();
 
 
             assertThat(result.get("2015"), is(8097));
@@ -107,7 +106,6 @@ public class Stream_05_Test {
             		.max(Comparator.comparing(Naissance::getNombre));
             //done
 
-            lines.close();
 
             assertThat(result.get().getNombre(), is(48));
             assertThat(result.get().getJour(), is("19640228"));
@@ -132,7 +130,6 @@ public class Stream_05_Test {
             				collectingAndThen(maxBy(Comparator.comparing(Naissance::getNombre)), n -> n.get())));
             //done
             
-            lines.close();
 
             assertThat(result.get("2015").getNombre(), is(38));
             assertThat(result.get("2015").getJour(), is("20150909"));
