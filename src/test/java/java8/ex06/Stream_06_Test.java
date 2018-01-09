@@ -34,7 +34,8 @@ public class Stream_06_Test {
     // TODO utiliser la méthode Stream.iterate
     // TODO cette méthode doit produire le même résultat que imperativeSum
     private long iterateSum(long n) {
-        return 0;
+        return Stream.iterate(0L, nb -> nb+1).limit(n).reduce((nb1, nb2) -> nb1+nb2).get();
+        //done
     }
 
     // TODO exécuter le test pour vérifier que les méthodes imperativeSum et iterateSum produisent le même résultat

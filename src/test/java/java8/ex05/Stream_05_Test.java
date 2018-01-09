@@ -126,7 +126,8 @@ public class Stream_05_Test {
             	String[] infos = str.split(";");
             	Naissance naissance = new Naissance(infos[1], infos[2], Integer.valueOf(infos[3]));
             	return naissance;})
-            		.collect(groupingBy((Naissance n) -> n.getAnnee(), 
+            		.collect(groupingBy(
+            				(Naissance n) -> n.getAnnee(), 
             				collectingAndThen(maxBy(Comparator.comparing(Naissance::getNombre)), n -> n.get())));
             //done
             
